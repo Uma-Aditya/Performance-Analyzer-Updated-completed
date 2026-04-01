@@ -2,22 +2,37 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { AssignedTest } from "../../data/mockTestData";
 import { format } from "date-fns";
-import { Clock, Users, Eye, CheckCircle } from 'lucide-react';
+import { Clock, Users, Eye, CheckCircle, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import { API_BASE_URL } from '../../config';
 
 interface TestListProps {
     tests: AssignedTest[];
+    facultyUsername: string;
+    onTestsChanged: () => void;
+    onTestDeleted: (testId: string) => void;
 }
 
-export const TestList = ({ tests }: TestListProps) => {
+export const TestList = ({ tests, facultyUsername, onTestsChanged, onTestDeleted }: TestListProps) => {
     const [selectedTestId, setSelectedTestId] = useState<string | null>(null);
     const [testQuestions, setTestQuestions] = useState<any[]>([]);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [deletingTestId, setDeletingTestId] = useState<string | null>(null);
+    const [testPendingDelete, setTestPendingDelete] = useState<AssignedTest | null>(null);
 
     const handleViewQuestions = async (testId: string, testName: string) => {
         setIsLoading(true);
@@ -57,6 +72,34 @@ export const TestList = ({ tests }: TestListProps) => {
         } catch (error) {
             console.error(error);
             toast.error("Error connecting to server");
+        }
+    };
+
+    const handleDeleteTest = async (testId: string, testTitle: string) => {
+        setDeletingTestId(testId);
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/tests/${testId}?username=${encodeURIComponent(facultyUsername)}`, {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                toast.success("Test deleted successfully");
+                onTestDeleted(testId);
+                await onTestsChanged();
+            } else if (response.status === 404) {
+                setTestPendingDelete(null);
+                toast.info("This test was already removed. Refreshing the list.");
+                onTestDeleted(testId);
+                await onTestsChanged();
+            } else {
+                const errorData = await response.json();
+                toast.error(errorData.detail || "Failed to delete test");
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error("Error connecting to server");
+        } finally {
+            setDeletingTestId(null);
         }
     };
 
@@ -111,24 +154,35 @@ export const TestList = ({ tests }: TestListProps) => {
                                                     </div>
                                                 </div>
                                             </TableCell>
-                                            <TableCell className="text-right space-x-2">
-                                                <Button
-                                                    variant="outline"
-                                                    size="sm"
-                                                    onClick={() => handleReleaseResults(test.id)}
-                                                    title="Make results visible to students"
-                                                >
-                                                    <CheckCircle className="w-4 h-4 mr-2" />
-                                                    Release Results
-                                                </Button>
-                                                <Button
-                                                    variant="outline"
-                                                    size="sm"
-                                                    onClick={() => handleViewQuestions(test.id, test.title)}
-                                                >
-                                                    <Eye className="w-4 h-4 mr-2" />
-                                                    View Questions
-                                                </Button>
+                                            <TableCell className="text-right">
+                                                <div className="flex items-center justify-end gap-2 flex-nowrap">
+                                                    <Button
+                                                        variant="outline"
+                                                        size="sm"
+                                                        onClick={() => handleReleaseResults(test.id)}
+                                                        title="Make results visible to students"
+                                                    >
+                                                        <CheckCircle className="w-4 h-4 mr-2" />
+                                                        Release Results
+                                                    </Button>
+                                                    <Button
+                                                        variant="outline"
+                                                        size="sm"
+                                                        onClick={() => handleViewQuestions(test.id, test.title)}
+                                                    >
+                                                        <Eye className="w-4 h-4 mr-2" />
+                                                        View Questions
+                                                    </Button>
+                                                    <Button
+                                                        variant="destructive"
+                                                        size="icon"
+                                                        onClick={() => setTestPendingDelete(test)}
+                                                        disabled={deletingTestId === test.id}
+                                                        title="Delete this test"
+                                                    >
+                                                        <Trash2 className="w-4 h-4" />
+                                                    </Button>
+                                                </div>
                                             </TableCell>
                                         </TableRow>
                                     ))}
@@ -172,6 +226,35 @@ export const TestList = ({ tests }: TestListProps) => {
                     </div>
                 </DialogContent>
             </Dialog>
+
+            <AlertDialog open={!!testPendingDelete} onOpenChange={(open) => !open && setTestPendingDelete(null)}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Delete Test?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            {testPendingDelete
+                                ? `Delete "${testPendingDelete.title}"? This will remove the test from the teacher view and from student dashboards as well.`
+                                : "This will remove the selected test."}
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel disabled={!!deletingTestId}>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                            onClick={(event) => {
+                                event.preventDefault();
+                                if (testPendingDelete) {
+                                    void handleDeleteTest(testPendingDelete.id, testPendingDelete.title).then(() => {
+                                        setTestPendingDelete(null);
+                                    });
+                                }
+                            }}
+                            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                        >
+                            {deletingTestId ? 'Deleting...' : 'Delete Test'}
+                        </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </>
     );
 };

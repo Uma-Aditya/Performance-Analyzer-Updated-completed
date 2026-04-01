@@ -15,7 +15,13 @@ export const CreateTestTab = ({ facultyUsername }: CreateTestTabProps) => {
 
     const fetchTests = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/api/tests/faculty?username=${facultyUsername}`);
+            const response = await fetch(`${API_BASE_URL}/api/tests/faculty?username=${encodeURIComponent(facultyUsername)}&_t=${Date.now()}`, {
+                cache: 'no-store',
+                headers: {
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache',
+                },
+            });
             if (response.ok) {
                 const data = await response.json();
 
@@ -35,15 +41,32 @@ export const CreateTestTab = ({ facultyUsername }: CreateTestTabProps) => {
                 }));
 
                 setCreatedTests(formattedTests);
+            } else {
+                setCreatedTests([]);
             }
         } catch (error) {
             console.error("Failed to fetch previous tests", error);
+            setCreatedTests([]);
         }
     };
 
     useEffect(() => {
         fetchTests();
+        const interval = setInterval(fetchTests, 5000);
+        const handleFocus = () => {
+            fetchTests();
+        };
+
+        window.addEventListener('focus', handleFocus);
+        return () => {
+            clearInterval(interval);
+            window.removeEventListener('focus', handleFocus);
+        };
     }, [facultyUsername]);
+
+    const handleTestDeleted = (testId: string) => {
+        setCreatedTests(prev => prev.filter(test => test.id !== testId));
+    };
 
     return (
         <div className="space-y-8">
@@ -65,7 +88,12 @@ export const CreateTestTab = ({ facultyUsername }: CreateTestTabProps) => {
             <AIQuestionVariationTool />
 
             {/* Renders previous tests */}
-            <TestList tests={createdTests} />
+            <TestList
+                tests={createdTests}
+                facultyUsername={facultyUsername}
+                onTestsChanged={fetchTests}
+                onTestDeleted={handleTestDeleted}
+            />
         </div>
     );
 };

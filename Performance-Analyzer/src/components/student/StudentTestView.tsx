@@ -42,7 +42,14 @@ export const StudentTestView = ({ year, branch, section }: StudentTestViewProps)
                     section: section,
                     student_roll: studentRoll
                 });
-                const response = await fetch(`${API_BASE_URL}/api/tests/student?${params.toString()}`);
+                params.set('_t', String(Date.now()));
+                const response = await fetch(`${API_BASE_URL}/api/tests/student?${params.toString()}`, {
+                    cache: 'no-store',
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache',
+                    },
+                });
                 if (response.ok) {
                     const data = await response.json();
                     const formattedTests = data.map((t: any) => ({
@@ -58,9 +65,12 @@ export const StudentTestView = ({ year, branch, section }: StudentTestViewProps)
                         createdBy: t.createdBy
                     }));
                     setAvailableTests(formattedTests);
+                } else {
+                    setAvailableTests([]);
                 }
             } catch (err) {
                 console.error("Failed to fetch tests", err);
+                setAvailableTests([]);
             }
         };
 

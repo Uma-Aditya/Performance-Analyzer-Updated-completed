@@ -19,30 +19,43 @@ export const UpcomingTestBanner = ({ rollNumber, year, branch, section }: Upcomi
 
         const fetchTests = async () => {
             try {
-                const res = await fetch(`${API_BASE_URL}/api/tests/student?year=${year}&branch=${branch}&section=${section}&student_roll=${rollNumber}`);
+                const res = await fetch(`${API_BASE_URL}/api/tests/student?year=${encodeURIComponent(year)}&branch=${encodeURIComponent(branch)}&section=${encodeURIComponent(section)}&student_roll=${encodeURIComponent(rollNumber)}&_t=${Date.now()}`, {
+                    cache: 'no-store',
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache',
+                    },
+                });
                 if (res.ok) {
                     const tests = await res.json();
                     
                     // Find test ending within 24 hours
                     const now = new Date();
                     const in24Hours = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+                    let nextUpcomingTest = null;
                     
                     for (const t of tests) {
                         if (t.endTime) {
                             const endDate = new Date(t.endTime);
                             if (endDate > now && endDate <= in24Hours) {
-                                setUpcomingTest(t);
+                                nextUpcomingTest = t;
                                 break;
                             }
                         }
                     }
+                    setUpcomingTest(nextUpcomingTest);
+                } else {
+                    setUpcomingTest(null);
                 }
             } catch (err) {
                 console.error("Failed to check upcoming tests", err);
+                setUpcomingTest(null);
             }
         };
 
         fetchTests();
+        const interval = setInterval(fetchTests, 30000);
+        return () => clearInterval(interval);
     }, [rollNumber, year, branch, section]);
 
     useEffect(() => {

@@ -3,6 +3,8 @@ import json
 import logging
 import hashlib
 import io
+import re
+import random
 from datetime import datetime
 from io import BytesIO
 from typing import Optional, List, Dict
@@ -33,11 +35,61 @@ logger.info("Initializing Performance Analyzer Backend...")
 from dotenv import load_dotenv
 load_dotenv()
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "YOUR_GEMINI_API_KEY_HERE")
-if GEMINI_API_KEY:
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
+if GEMINI_API_KEY and GEMINI_API_KEY != "YOUR_GEMINI_API_KEY_HERE":
     genai.configure(api_key=GEMINI_API_KEY)
 else:
+    GEMINI_API_KEY = ""
     logger.warning("GEMINI_API_KEY not found in environment variables.")
+
+PREFERRED_GEMINI_MODELS = [
+    "models/gemini-2.0-flash-lite",
+    "models/gemini-2.0-flash",
+    "models/gemini-2.5-flash",
+    "models/gemini-2.5-flash-lite",
+    "models/gemini-flash-latest",
+]
+_cached_gemini_model_name: Optional[str] = None
+
+
+def get_gemini_model_name() -> str:
+    global _cached_gemini_model_name
+
+    if _cached_gemini_model_name:
+        return _cached_gemini_model_name
+
+    configured_name = os.environ.get("GEMINI_MODEL", "").strip()
+    if configured_name:
+        _cached_gemini_model_name = configured_name
+        return _cached_gemini_model_name
+
+    if not GEMINI_API_KEY:
+        raise RuntimeError("Gemini API key is not configured.")
+
+    try:
+        available_models = {
+            model.name
+            for model in genai.list_models()
+            if "generateContent" in getattr(model, "supported_generation_methods", [])
+        }
+        for model_name in PREFERRED_GEMINI_MODELS:
+            if model_name in available_models:
+                _cached_gemini_model_name = model_name
+                logger.info("Using Gemini model: %s", _cached_gemini_model_name)
+                return _cached_gemini_model_name
+    except Exception as exc:
+        logger.warning("Unable to list Gemini models, falling back to default: %s", exc)
+
+    _cached_gemini_model_name = PREFERRED_GEMINI_MODELS[0]
+    logger.info("Falling back to default Gemini model: %s", _cached_gemini_model_name)
+    return _cached_gemini_model_name
+
+
+def build_gemini_model():
+    return genai.GenerativeModel(
+        'gemini-2.5-flash',
+        generation_config={"response_mime_type": "application/json"}
+    )
 
 # Admin credentials
 ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "superadmin")
@@ -616,6 +668,38 @@ async def release_test_results(test_id: int):
     finally:
         db.close()
 
+
+@app.delete("/api/tests/{test_id}")
+async def delete_test(test_id: int, username: str):
+    db: Session = SessionLocal()
+    try:
+        test = db.query(Test).filter(Test.id == test_id).first()
+        if not test:
+            raise HTTPException(status_code=404, detail="Test not found")
+
+        if test.createdBy != username:
+            raise HTTPException(status_code=403, detail="You can only delete tests you created")
+
+        db.query(StudentAssignedQuestion).filter(StudentAssignedQuestion.test_id == test_id).delete()
+        db.query(StudentAnswer).filter(StudentAnswer.test_id == test_id).delete()
+        db.query(StudentTestResult).filter(StudentTestResult.test_id == test_id).delete()
+        db.query(Question).filter(Question.test_id == test_id).delete()
+        db.delete(test)
+
+        audit_log = AuditLog(
+            actorUsername=username,
+            actorRole="faculty",
+            action="DELETE_TEST",
+            entityType="Test",
+            entityId=str(test_id),
+            details=f"Deleted test '{test.testName}' and related question/result records"
+        )
+        db.add(audit_log)
+        db.commit()
+        return {"message": "Test deleted successfully"}
+    finally:
+        db.close()
+
 @app.get("/api/resources/{subject}")
 async def get_subject_resources(subject: str):
     db: Session = SessionLocal()
@@ -1151,9 +1235,6 @@ async def get_sections():
 async def create_test(request: TestCreateRequest):
     db: Session = SessionLocal()
     try:
-        if not GEMINI_API_KEY:
-            raise HTTPException(status_code=500, detail="Gemini API Key is not configured. Cannot generate questions.")
-
         new_test = Test(
             testName=request.testName,
             subject=request.subject,
@@ -1189,15 +1270,12 @@ async def create_test(request: TestCreateRequest):
         # Otherwise, call Gemini to generate questions in a SINGLE request (Replica Match)
         try:
             if not GEMINI_API_KEY:
-                # If Gemini is not configured, we just return the test ID without questions
-                logger.warning("Gemini API key not configured. Test created without questions.")
-                return {"message": "Test created, but no AI questions available due to missing API Key.", "test_id": new_test.id}
-            
-            # Using the exact same configuration as the Aman replica
-            model = genai.GenerativeModel(
-                'gemini-2.5-flash',
-                generation_config={"response_mime_type": "application/json"}
-            )
+                raise HTTPException(
+                    status_code=500,
+                    detail="Gemini API key is not configured. Switch to JSON Import or set a valid GEMINI_API_KEY."
+                )
+
+            model = build_gemini_model()
             
             prompt = f"""
             Generate exactly {request.numberOfQuestions} multiple choice questions for the subject "{request.subject}".
@@ -3122,11 +3200,7 @@ async def generate_exam_variations(request: VariationRequest):
         raise HTTPException(status_code=500, detail="Gemini API not configured")
     
     try:
-        # Using the exact same configuration as the Aman replica
-        model = genai.GenerativeModel(
-            'gemini-2.5-flash',
-            generation_config={"response_mime_type": "application/json"}
-        )
+        model = build_gemini_model()
 
         # Construct the prompt based on user requirements for a single request
         prompt = f"""
