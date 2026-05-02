@@ -34,7 +34,10 @@ export const initMockBackend = () => {
     const generateGeminiQuestions = async (subject: string, numQuestions: number) => {
         try {
             console.log(`Pinging Gemini API Native Web for ${numQuestions} questions on ${subject}...`);
-            const apiKey = import.meta.env.VITE_GEMINI_API_KEY || "AIzaSyB2wszEpxem-RQUZXSGNRDurOhQwvjkRs8";
+            const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+            if (!apiKey) {
+                throw new Error("VITE_GEMINI_API_KEY is not configured in the environment.");
+            }
             const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
             
             const prompt = `Generate exactly ${numQuestions} multiple-choice questions for the academic subject "${subject}". 
