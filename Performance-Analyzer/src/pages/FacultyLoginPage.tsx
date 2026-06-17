@@ -29,6 +29,23 @@ const FacultyLoginPage = () => {
         e.preventDefault();
         setIsLoading(true);
 
+        // Mock bypass for Vercel deployment/serverless demo
+        if (username === 'uma' && password === 'uma123') {
+            setTimeout(() => {
+                localStorage.setItem('user', JSON.stringify({
+                    role: 'faculty',
+                    username: 'uma',
+                    id: 999,
+                    name: 'Uma Devi',
+                    subject: 'Computer Science'
+                }));
+                toast.success('Faculty login successful (Demo Mode)!');
+                navigate('/faculty-dashboard');
+                setIsLoading(false);
+            }, 800);
+            return;
+        }
+
         try {
             const response = await fetch(`${API_BASE_URL}/api/teachers/login`, {
                 method: 'POST',

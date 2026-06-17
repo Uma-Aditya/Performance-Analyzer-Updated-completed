@@ -55,6 +55,25 @@ const StudentLoginPage = () => {
         e.preventDefault();
         setIsLoginLoading(true);
 
+        // Mock bypass for Vercel deployment/serverless demo
+        if (loginEnrollmentId === 'Aditya' && loginPassword === 'Aditya123') {
+            setTimeout(() => {
+                localStorage.setItem('user', JSON.stringify({
+                    role: 'student',
+                    username: 'Aditya',
+                    rollNumber: 'Aditya',
+                    name: 'Aditya',
+                    year: '3rd Year',
+                    branch: 'CSE',
+                    section: 'A'
+                }));
+                toast.success('Student login successful (Demo Mode)!');
+                navigate('/student-dashboard');
+                setIsLoginLoading(false);
+            }, 800);
+            return;
+        }
+
         try {
             const response = await fetch(`${API_BASE_URL}/api/students/login`, {
                 method: 'POST',

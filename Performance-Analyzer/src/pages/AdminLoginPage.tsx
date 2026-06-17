@@ -29,6 +29,17 @@ const AdminLoginPage = () => {
     e.preventDefault();
     setIsLoading(true);
 
+    // Mock bypass for Vercel deployment/serverless demo
+    if (username === 'Admin' && password === 'Admin') {
+      setTimeout(() => {
+        localStorage.setItem('user', JSON.stringify({ role: 'admin', username: 'Admin' }));
+        toast.success('Admin login successful (Demo Mode)!');
+        navigate('/admin-dashboard');
+        setIsLoading(false);
+      }, 800);
+      return;
+    }
+
     try {
       const response = await fetch(`${API_BASE_URL}/api/admin/login`, {
         method: 'POST',

@@ -13,7 +13,32 @@ export interface AssignedTest {
 
 // In-memory array for our mock session.
 // Re-initializing won't persist across hard reloads, but serves the UI needs for now.
-export let mockTestDatabase: AssignedTest[] = [];
+export let mockTestDatabase: AssignedTest[] = [
+    {
+        id: "mock-test-1",
+        title: "Introduction to Artificial Intelligence MCQ",
+        year: "3rd Year",
+        branch: "CSE",
+        section: "A",
+        subject: "Computer Science",
+        date: new Date().toISOString().split('T')[0],
+        startTime: "09:00",
+        endTime: "23:59",
+        createdBy: "uma"
+    },
+    {
+        id: "mock-test-2",
+        title: "Data Structures & Algorithms Final Test",
+        year: "3rd Year",
+        branch: "CSE",
+        section: "A",
+        subject: "Computer Science",
+        date: new Date().toISOString().split('T')[0],
+        startTime: "09:00",
+        endTime: "23:59",
+        createdBy: "uma"
+    }
+];
 
 export const addMockTest = (test: Omit<AssignedTest, 'id'>) => {
     const newTest: AssignedTest = {

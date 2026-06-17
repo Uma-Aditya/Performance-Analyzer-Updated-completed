@@ -21,9 +21,19 @@ export const StudentAnnouncements = ({ year, branch }: StudentAnnouncementsProps
                 if (res.ok) {
                     const data = await res.json();
                     setAnnouncements(data.slice(0, 3)); // Show top 3 most recent
+                } else {
+                    throw new Error("Failed to load announcements");
                 }
             } catch (err) {
-                console.error("Failed to fetch announcements", err);
+                console.error("Failed to fetch announcements, using mock announcement", err);
+                setAnnouncements([
+                    {
+                        id: 'demo-1',
+                        message: "Welcome to Ideal Institute of Technology! As you are running in Demo Mode, backend requests are mocked locally. Explore your dashboard tabs above to view available jobs, take tests, and see analytics.",
+                        postedBy: "System Administrator",
+                        timestamp: new Date().toISOString()
+                    }
+                ]);
             }
         };
 

@@ -59,18 +59,34 @@ export const StudentTestView = ({ year, branch, section }: StudentTestViewProps)
                         year: t.year,
                         branch: t.branch,
                         section: t.section,
-                        startTime: t.startTime ? t.startTime.split('T')[1].substring(0, 5) : '',
-                        endTime: t.endTime ? t.endTime.split('T')[1].substring(0, 5) : '',
-                        date: t.startTime ? t.startTime.split('T')[0] : '',
+                        startTime: t.startTime ? (t.startTime.includes('T') ? t.startTime.split('T')[1].substring(0, 5) : t.startTime) : '',
+                        endTime: t.endTime ? (t.endTime.includes('T') ? t.endTime.split('T')[1].substring(0, 5) : t.endTime) : '',
+                        date: t.startTime ? (t.startTime.includes('T') ? t.startTime.split('T')[0] : t.startTime) : '',
                         createdBy: t.createdBy
                     }));
                     setAvailableTests(formattedTests);
                 } else {
-                    setAvailableTests([]);
+                    throw new Error("API call unsuccessful");
                 }
             } catch (err) {
-                console.error("Failed to fetch tests", err);
-                setAvailableTests([]);
+                console.error("Failed to fetch tests, using mock data", err);
+                const mockTests = mockTestDatabase.filter(t =>
+                    t.year.toLowerCase() === year.toLowerCase() &&
+                    t.branch.toLowerCase() === branch.toLowerCase() &&
+                    t.section.toLowerCase() === section.toLowerCase()
+                ).map(t => ({
+                    id: t.id,
+                    testName: t.title,
+                    subject: t.subject,
+                    year: t.year,
+                    branch: t.branch,
+                    section: t.section,
+                    startTime: t.startTime,
+                    endTime: t.endTime,
+                    date: t.date,
+                    createdBy: t.createdBy
+                }));
+                setAvailableTests(mockTests);
             }
         };
 
