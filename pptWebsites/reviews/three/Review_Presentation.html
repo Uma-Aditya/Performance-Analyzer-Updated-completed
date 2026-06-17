@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Review 3 - Performance Analyzer Progress</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        :root { --p-blue: #2563eb; --text: #111; --border: #cbd5e1; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #f1f5f9; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        #presentation-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 0 300px 0;
+            gap: 60px;
+        }
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background: #fff;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            flex-shrink: 0;
+            padding: 60px 80px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+        .header { margin-bottom: 5px; }
+        .title-text { margin: 0; font-size: 56px; font-weight: 800; color: var(--text); letter-spacing: -1px; }
+        .separator { width: 100%; height: 4px; background-color: var(--p-blue); margin: 20px 0 40px 0; border-radius: 2px; }
+        .content-box { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+        .bullet-item { display: flex; align-items: flex-start; margin-bottom: 25px; font-size: 28px; line-height: 1.4; color: #333; font-weight: 500; }
+        .bullet-icon { margin-right: 20px; color: var(--p-blue); font-size: 16px; margin-top: 12px; }
+        .body-text { font-size: 32px; line-height: 1.6; color: #1a1a1a; margin-bottom: 30px; }
+        .slide-label { position: absolute; top: 25px; right: 30px; background: #111; color: #fff; padding: 6px 16px; border-radius: 8px; font-size: 14px; font-weight: 800; }
+    </style>
+</head>
+<body>
+
+<div id="presentation-container">
+    <!-- SLIDE 1: Title -->
+    <div class="slide" id="s1">
+
+        <div style="height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+            <h1 style="font-size: 82px; font-weight: 800; margin: 0; color: var(--p-blue); letter-spacing: -2px;">Performance Analyzer</h1>
+            <p style="font-size: 36px; color: #4a5568; margin: 15px 0 50px 0; font-weight: 500;">Project Progress Review Overview</p>
+            <div style="width: 100%; display: flex; justify-content: space-between; text-align: left; font-size: 24px;">
+                <div>
+                    <p style="font-weight: 800;">CSE Department</p>
+                    <p>Ideal Institute of Technology</p>
+                </div>
+                <div>
+                    <p style="font-weight: 800;">Presented By:</p>
+                    <ul style="list-style: none; padding: 0; font-weight: 600;">
+                        <li>Navaneeth Tripathi Aman</li>
+                        <li>Mylapalli Yesebu</li>
+                        <li>Pakki Uma Aditya Mohan</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: Progress Overview -->
+    <div class="slide" id="s2">
+        <div class="header"><h1 class="title-text">Progress Overview</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <p class="body-text">The project is in the integration stage where all core modules are being merged into a single platform.</p>
+            <p class="body-text">Frontend, backend, and database connectivity is established and working for major workflows.</p>
+            <p class="body-text">Development focus is currently on analytics visualization and placement module integration.</p>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: Completed Work -->
+    <div class="slide" id="s3">
+        <div class="header"><h1 class="title-text">Completed Work</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-check-circle bullet-icon"></i><div>Developed multi-role login pages for all users.</div></div>
+            <div class="bullet-item"><i class="fas fa-check-circle bullet-icon"></i><div>Created role-based dashboards for specific permissions.</div></div>
+            <div class="bullet-item"><i class="fas fa-check-circle bullet-icon"></i><div>Completed Student and Faculty record management modules.</div></div>
+            <div class="bullet-item"><i class="fas fa-check-circle bullet-icon"></i><div>Implemented Excel bulk marks upload functionality.</div></div>
+            <div class="bullet-item"><i class="fas fa-check-circle bullet-icon"></i><div>Integrated AI-based MCQ test generation engine.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: Working Modules -->
+    <div class="slide" id="s4">
+        <div class="header"><h1 class="title-text">Working Modules</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-cog bullet-icon"></i><div>Authentication and Role Management logic.</div></div>
+            <div class="bullet-item"><i class="fas fa-cog bullet-icon"></i><div>Marks Upload and DB persistence module.</div></div>
+            <div class="bullet-item"><i class="fas fa-cog bullet-icon"></i><div>Online Test attending and submission flow.</div></div>
+            <div class="bullet-item"><i class="fas fa-cog bullet-icon"></i><div>Initial student performance analytics generation.</div></div>
+            <div class="bullet-item"><i class="fas fa-cog bullet-icon"></i><div>Placement opportunity posting and viewing board.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: Frontend -->
+    <div class="slide" id="s5">
+        <div class="header"><h1 class="title-text">Frontend</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-laptop-code bullet-icon"></i><div>Built with React.js and TypeScript for modern UI.</div></div>
+            <div class="bullet-item"><i class="fas fa-laptop-code bullet-icon"></i><div>Styled with Tailwind CSS for responsiveness.</div></div>
+            <div class="bullet-item"><i class="fas fa-laptop-code bullet-icon"></i><div>Specialized dashboards for Admin, Faculty, and TPO.</div></div>
+            <div class="bullet-item"><i class="fas fa-laptop-code bullet-icon"></i><div>Visual data charts integrated using Recharts.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: Backend -->
+    <div class="slide" id="s6">
+        <div class="header"><h1 class="title-text">Backend</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-server bullet-icon"></i><div>Engineered using Python and FastAPI framework.</div></div>
+            <div class="bullet-item"><i class="fas fa-server bullet-icon"></i><div>SQLAlchemy handles all database operations.</div></div>
+            <div class="bullet-item"><i class="fas fa-server bullet-icon"></i><div>Pandas/OpenPyXL used for Excel data processing.</div></div>
+            <div class="bullet-item"><i class="fas fa-server bullet-icon"></i><div>Google Gemini AI API used for test content creation.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: Database -->
+    <div class="slide" id="s7">
+        <div class="header"><h1 class="title-text">Database Design</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-database bullet-icon"></i><div>Running on SQLite for lightweight reliability.</div></div>
+            <div class="bullet-item"><i class="fas fa-database bullet-icon"></i><div>Students table for roll numbers and profiles.</div></div>
+            <div class="bullet-item"><i class="fas fa-database bullet-icon"></i><div>Teachers table for assignments and subjects.</div></div>
+            <div class="bullet-item"><i class="fas fa-database bullet-icon"></i><div>Performance table for academic scores.</div></div>
+            <div class="bullet-item"><i class="fas fa-database bullet-icon"></i><div>Jobs table for placement opportunity storage.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: APIs -->
+    <div class="slide" id="s8">
+        <div class="header"><h1 class="title-text">API Endpoints</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-link bullet-icon"></i><div>Login API for multi-role user authentication.</div></div>
+            <div class="bullet-item"><i class="fas fa-link bullet-icon"></i><div>Student API for record management.</div></div>
+            <div class="bullet-item"><i class="fas fa-link bullet-icon"></i><div>Marks Upload API for bulk file ingestion.</div></div>
+            <div class="bullet-item"><i class="fas fa-link bullet-icon"></i><div>Test Generation API for AI assessments.</div></div>
+            <div class="bullet-item"><i class="fas fa-link bullet-icon"></i><div>Job API for placement board updates.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 9: Screens -->
+    <div class="slide" id="s9">
+        <div class="header"><h1 class="title-text">Screens Developed</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-pager bullet-icon"></i><div>Unified role-based login interfaces.</div></div>
+            <div class="bullet-item"><i class="fas fa-pager bullet-icon"></i><div>Specialized Admin and Faculty dashboards.</div></div>
+            <div class="bullet-item"><i class="fas fa-pager bullet-icon"></i><div>Bulk Marks upload and verification screen.</div></div>
+            <div class="bullet-item"><i class="fas fa-pager bullet-icon"></i><div>Student portal for attending AI online tests.</div></div>
+            <div class="bullet-item"><i class="fas fa-pager bullet-icon"></i><div>Analytics screen for performance visualization.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 10: Challenges -->
+    <div class="slide" id="s10">
+        <div class="header"><h1 class="title-text">Challenges</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-exclamation-triangle bullet-icon" style="color:#ef4444"></i><div>Complex frontend-backend API integration flows.</div></div>
+            <div class="bullet-item"><i class="fas fa-exclamation-triangle bullet-icon" style="color:#ef4444"></i><div>Handling various Excel file upload formats.</div></div>
+            <div class="bullet-item"><i class="fas fa-exclamation-triangle bullet-icon" style="color:#ef4444"></i><div>Fine-tuning AI prompts for relevant assessments.</div></div>
+            <div class="bullet-item"><i class="fas fa-exclamation-triangle bullet-icon" style="color:#ef4444"></i><div>Managing granular role-based dashboard access.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 11: Testing -->
+    <div class="slide" id="s11">
+        <div class="header"><h1 class="title-text">Testing & Validation</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-vials bullet-icon"></i><div>Validated login redirection for all user roles.</div></div>
+            <div class="bullet-item"><i class="fas fa-vials bullet-icon"></i><div>Verified data persistence for bulk marks uploads.</div></div>
+            <div class="bullet-item"><i class="fas fa-vials bullet-icon"></i><div>Confirmed accuracy of AI MCQ generation module.</div></div>
+            <div class="bullet-item"><i class="fas fa-vials bullet-icon"></i><div>Checked real-time calculation of test scores.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 12: Future Work -->
+    <div class="slide" id="s12">
+        <div class="header"><h1 class="title-text">Future Roadmap</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-forward bullet-icon"></i><div>Complete advanced reporting and PDF visualization.</div></div>
+            <div class="bullet-item"><i class="fas fa-forward bullet-icon"></i><div>Enhance direct job application features.</div></div>
+            <div class="bullet-item"><i class="fas fa-forward bullet-icon"></i><div>Implement JWT security and session encryption.</div></div>
+            <div class="bullet-item"><i class="fas fa-forward bullet-icon"></i><div>Prepare system for full cloud deployment.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 13: Conclusion -->
+    <div class="slide" id="s13">
+        <div class="header"><h1 class="title-text">Conclusion</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <p class="body-text">Project is progressing on schedule with core modules live.</p>
+            <p class="body-text">System now supports integrated login, marks, and AI tests.</p>
+            <p class="body-text">Moving towards a fully automated management platform.</p>
+        </div>
+    </div>
+
+    <div style="height: 500px; width: 100%;"></div>
+</div>
+
+</body>
+</html>

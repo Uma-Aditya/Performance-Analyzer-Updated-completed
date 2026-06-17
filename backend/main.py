@@ -346,6 +346,42 @@ def seed_default_accounts():
             )
             db.add(new_tpo)
             db.commit()
+            
+        # Seed teacher 'uma' / 'uma123'
+        uma_user = db.query(Teacher).filter(Teacher.username == "uma").first()
+        if not uma_user:
+            new_teacher = Teacher(
+                name="Uma Devi",
+                username="uma",
+                password=hash_password("uma123"),
+                role="faculty",
+                subject="Computer Science"
+            )
+            db.add(new_teacher)
+            db.commit()
+            
+        # Seed student 'Aditya' / 'Aditya123'
+        aditya_student = db.query(Student).filter(Student.rollNumber == "Aditya").first()
+        if not aditya_student:
+            new_student = Student(
+                name="Aditya",
+                rollNumber="Aditya",
+                password=hash_password("Aditya123"),
+                year="3rd Year",
+                branch="CSE",
+                section="A"
+            )
+            db.add(new_student)
+            
+            # Ensure CSE branch and A section exist
+            branch_cse = db.query(Branch).filter(Branch.name == "CSE").first()
+            if not branch_cse:
+                db.add(Branch(name="CSE", full_name="Computer Science and Engineering"))
+            section_a = db.query(Section).filter(Section.name == "A").first()
+            if not section_a:
+                db.add(Section(name="A", branch="CSE", year="3rd Year"))
+                
+            db.commit()
     except Exception as e:
         print(f"Error seeding background info: {e}")
     finally:
@@ -462,11 +498,11 @@ async def update_student_password(roll_number: str, request: UpdateStudentPasswo
 
 @app.post("/api/admin/login")
 async def login_admin(request: AdminLoginRequest):
-    """Validates super admin credentials from environment variables."""
-    if request.username == ADMIN_USERNAME and request.password == ADMIN_PASSWORD:
+    """Validates super admin credentials from environment variables or demo credentials."""
+    if (request.username == ADMIN_USERNAME and request.password == ADMIN_PASSWORD) or (request.username == "Admin" and request.password == "Admin"):
         return {
             "message": "Admin login successful",
-            "admin": {"role": "admin", "username": request.username}
+            "admin": {"role": "admin", "username": request.username if request.username == "Admin" else request.username}
         }
     raise HTTPException(status_code=401, detail="Invalid admin credentials")
 

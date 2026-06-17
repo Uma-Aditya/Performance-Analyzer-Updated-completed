@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Performance Analyzer - Database</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <style>
+        :root { --p-blue: #2563eb; --text: #1a1a1a; --border: #cbd5e1; }
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #ffffff; overflow: hidden; }
+        .slide-container { width: 1280px; height: 720px; background: #ffffff; position: relative; padding: 60px 80px; box-sizing: border-box; }
+        .header { margin-bottom: 20px; }
+        .title-text { margin: 0; font-size: 52px; font-weight: 700; color: var(--text); }
+        .separator { width: 100%; height: 2px; background-color: var(--border); margin-top: 15px; margin-bottom: 40px; }
+        .body-text { font-size: 26px; line-height: 1.5; color: #333; margin-bottom: 30px; }
+        .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .tech-box { background: #f1f5f9; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .tech-box h3 { margin-top: 0; color: var(--p-blue); font-size: 22px; margin-bottom: 10px; }
+        .tech-box p { font-size: 18px; margin: 5px 0; color: #334155; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header"><h1 class="title-text">Database Design</h1></div>
+        <div class="separator"></div>
+        <p class="body-text"><strong>SQLite</strong> is used as the database for the project. It is lightweight and suitable for local development.</p>
+        <div class="grid-2col">
+            <div class="tech-box"><h3>Students Table</h3><p>Stores student details including roll number, name, section, and other information.</p></div>
+            <div class="tech-box"><h3>Teachers Table</h3><p>Stores faculty details, subject assignments, and department information.</p></div>
+            <div class="tech-box"><h3>Performance Table</h3><p>Stores marks and test scores; used for analytics and reporting.</p></div>
+            <div class="tech-box"><h3>Jobs Table</h3><p>Stores placement opportunities for students to view jobs added by placement officers.</p></div>
+        </div>
+    </div>
+</body>
+</html>

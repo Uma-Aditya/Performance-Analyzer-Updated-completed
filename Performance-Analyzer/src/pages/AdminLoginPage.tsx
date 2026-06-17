@@ -112,6 +112,22 @@ const AdminLoginPage = () => {
                 </button>
               </div>
             </form>
+
+            <div className="mt-6 pt-6 border-t border-border/30">
+              <p className="text-xs text-muted-foreground text-center mb-3">Demo Credentials</p>
+              <button
+                type="button"
+                onClick={() => {
+                  setUsername('Admin');
+                  setPassword('Admin');
+                }}
+                className="w-full py-2.5 px-3 rounded-lg text-xs font-mono bg-primary/5 hover:bg-primary/10 border border-primary/20 hover:border-primary/30 flex justify-between items-center transition-all duration-200"
+              >
+                <span>Username: <strong className="text-primary">Admin</strong></span>
+                <span>Password: <strong className="text-primary">Admin</strong></span>
+                <span className="text-[10px] bg-primary/20 text-primary px-1.5 py-0.5 rounded">Autofill</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

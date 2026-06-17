@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Performance Analyzer - Test Cases</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        :root { --p-blue: #2563eb; --text: #111; --border: #cbd5e1; }
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #fff; overflow: hidden; }
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background: #fff;
+            position: relative;
+            padding: 60px 80px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+        .header { margin-bottom: 5px; }
+        .title-text { margin: 0; font-size: 56px; font-weight: 800; color: var(--text); letter-spacing: -1px; }
+        .separator { width: 100%; height: 4px; background-color: var(--p-blue); margin: 20px 0 40px 0; border-radius: 2px; }
+        .content-box { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+        .bullet-item { display: flex; align-items: flex-start; margin-bottom: 25px; font-size: 28px; line-height: 1.4; color: #333; font-weight: 500; }
+        .bullet-icon { margin-right: 20px; color: var(--p-blue); font-size: 16px; margin-top: 12px; }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header"><h1 class="title-text">Test Cases</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-vials bullet-icon"></i><div>Verified Admin and Role-based Login.</div></div>
+            <div class="bullet-item"><i class="fas fa-vials bullet-icon"></i><div>Validated Excel data storage accuracy.</div></div>
+            <div class="bullet-item"><i class="fas fa-vials bullet-icon"></i><div>Confirmed AI question generation flow.</div></div>
+            <div class="bullet-item"><i class="fas fa-vials bullet-icon"></i><div>Tested assessment scoring precision.</div></div>
+            <div class="bullet-item"><i class="fas fa-vials bullet-icon"></i><div>Verified job board visibility alerts.</div></div>
+        </div>
+    </div>
+</body>
+</html>

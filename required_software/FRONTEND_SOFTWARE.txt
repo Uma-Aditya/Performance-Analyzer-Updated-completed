@@ -1,0 +1,11 @@
+FRONTEND REQUIRED SOFTWARE
+
+1. Node.js 18+ and npm
+   Download from nodejs.org. Use 'node -v' to check.
+
+2. Modern Web Browser
+   Chrome, Firefox, or Edge. Use DevTools (F12) for debugging.
+
+3. VS Code Extensions
+   - ES7+ React/Redux/React-Native snippets
+   - Tailwind CSS IntelliSense

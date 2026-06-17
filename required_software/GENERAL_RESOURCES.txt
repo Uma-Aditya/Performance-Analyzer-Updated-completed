@@ -1,0 +1,14 @@
+GENERAL RESOURCES AND API KEYS
+
+1. Google Gemini API Key
+   Get it from aistudio.google.com. 
+   Required for AI-powered insights and test generation.
+
+2. Git
+   Download from git-scm.com for version control.
+
+3. Excel / CSV Editors
+   To prepare bulk data. Any spreadsheet software like Excel or Google Sheets.
+
+4. Internet Connection
+   Required for npm/pip installations and calling the Gemini AI API.

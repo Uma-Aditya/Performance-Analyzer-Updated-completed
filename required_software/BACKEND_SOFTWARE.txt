@@ -1,0 +1,13 @@
+BACKEND REQUIRED SOFTWARE
+
+1. Python 3.10+
+   Download from python.org. Use 'python --version' to check.
+
+2. VS Code IDE
+   Recommended extensions: Python, Pylance, SQLite Viewer.
+
+3. Testing Tools
+   Postman or Thunder Client (VS Code extension) for testing API endpoints.
+
+4. DB Browser for SQLite
+   To inspect 'database.sqlite' manually. Download from sqlitebrowser.org.

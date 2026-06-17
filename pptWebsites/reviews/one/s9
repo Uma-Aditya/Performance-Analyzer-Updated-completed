@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Performance Analyzer - Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        :root { --p-blue: #2563eb; --text: #1a1a1a; --border: #cbd5e1; }
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #ffffff; overflow: hidden; }
+        .slide-container { width: 1280px; height: 720px; background: #ffffff; position: relative; padding: 60px 80px; box-sizing: border-box; }
+        .header { margin-bottom: 20px; }
+        .title-text { margin: 0; font-size: 52px; font-weight: 700; color: var(--text); }
+        .separator { width: 100%; height: 2px; background-color: var(--border); margin-top: 15px; margin-bottom: 40px; }
+        .tech-section { width: 48%; margin-bottom: 30px; }
+        .tech-title { font-size: 28px; font-weight: 700; color: var(--p-blue); margin-bottom: 15px; }
+        .tech-content { font-size: 22px; line-height: 1.5; color: #333; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header"><h1 class="title-text">Technologies Used</h1></div>
+        <div class="separator"></div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <div class="tech-section">
+                <div class="tech-title">Frontend</div>
+                <div class="tech-content">
+                    <p><strong>React.js:</strong> Fast and interactive user interfaces.</p>
+                    <p><strong>Tailwind CSS:</strong> Responsive and modern design.</p>
+                </div>
+            </div>
+            <div class="tech-section">
+                <div class="tech-title">Backend</div>
+                <div class="tech-content">
+                    <p><strong>Python & FastAPI:</strong> API development and project logic.</p>
+                </div>
+            </div>
+            <div class="tech-section">
+                <div class="tech-title">Database</div>
+                <div class="tech-content">
+                    <p><strong>SQLite:</strong> Reliable storage for student, marks, and placement data.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

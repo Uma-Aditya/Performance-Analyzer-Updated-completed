@@ -1,0 +1,20 @@
+BACKEND INSTALLATION GUIDE
+
+Prerequisites:
+- Python 3.10 or higher
+- pip (Python package manager)
+
+Steps:
+1. Navigate to 'backend' directory.
+2. Create virtual environment: python -m venv venv
+3. Activate:
+   - Windows: venv\Scripts\activate
+   - Mac/Linux: source venv/bin/activate
+4. Install dependencies: pip install -r requirements.txt
+5. Set up .env file with:
+   - GEMINI_API_KEY
+   - DATABASE_URL=sqlite:///./database.sqlite
+6. Run: uvicorn main:app --reload --port 8000
+
+Verification:
+Check http://127.0.0.1:8000/docs for Swagger UI.

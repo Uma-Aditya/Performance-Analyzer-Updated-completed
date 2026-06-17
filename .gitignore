@@ -75,3 +75,7 @@ bun.lockb
 coverage/
 .cache/
 documentation/
+
+# Exclude MD files
+*.md
+**/*.md

@@ -186,6 +186,22 @@ const StudentLoginPage = () => {
                                             {isLoginLoading ? 'Signing In...' : 'Sign In'}
                                         </button>
 
+                                        <div className="mt-4 mb-6 pt-4 border-t border-border/30">
+                                            <p className="text-xs text-muted-foreground text-center mb-3">Demo Credentials</p>
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setLoginEnrollmentId('Aditya');
+                                                    setLoginPassword('Aditya123');
+                                                }}
+                                                className="w-full py-2.5 px-3 rounded-lg text-xs font-mono bg-primary/5 hover:bg-primary/10 border border-primary/20 hover:border-primary/30 flex justify-between items-center transition-all duration-200"
+                                            >
+                                                <span>Roll No: <strong className="text-primary">Aditya</strong></span>
+                                                <span>Password: <strong className="text-primary">Aditya123</strong></span>
+                                                <span className="text-[10px] bg-primary/20 text-primary px-1.5 py-0.5 rounded">Autofill</span>
+                                            </button>
+                                        </div>
+
                                         <div className="relative my-4">
                                             <div className="absolute inset-0 flex items-center">
                                                 <span className="w-full border-t border-border/50" />

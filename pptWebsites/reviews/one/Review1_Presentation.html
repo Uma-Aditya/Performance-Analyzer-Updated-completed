@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Review 1 - Performance Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        :root { --p-blue: #2563eb; --text: #111; --border: #cbd5e1; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #f1f5f9; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        #presentation-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 0 300px 0;
+            gap: 60px;
+        }
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background: #fff;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            flex-shrink: 0;
+            padding: 60px 80px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+        .header { margin-bottom: 5px; }
+        .title-text { margin: 0; font-size: 56px; font-weight: 800; color: var(--text); letter-spacing: -1px; }
+        .separator { width: 100%; height: 4px; background-color: var(--p-blue); margin: 20px 0 40px 0; border-radius: 2px; }
+        .content-box { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+        .bullet-item { display: flex; align-items: flex-start; margin-bottom: 25px; font-size: 28px; line-height: 1.4; color: #333; font-weight: 500; }
+        .bullet-icon { margin-right: 20px; color: var(--p-blue); font-size: 16px; margin-top: 12px; }
+        .body-text { font-size: 32px; line-height: 1.6; color: #1a1a1a; margin-bottom: 30px; }
+        .slide-label { position: absolute; top: 25px; right: 30px; background: #111; color: #fff; padding: 6px 16px; border-radius: 8px; font-size: 14px; font-weight: 800; }
+    </style>
+</head>
+<body>
+
+<div id="presentation-container">
+    <div class="slide" id="s1">
+        <div class="slide-label">SLIDE 01</div>
+        <div style="height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+            <h1 style="font-size: 82px; font-weight: 800; margin: 0; color: var(--p-blue); letter-spacing: -2px;">Performance Analyzer</h1>
+            <p style="font-size: 36px; color: #4a5568; margin: 15px 0 50px 0; font-weight: 500;">Initial Project Review</p>
+            <div style="width: 100%; display: flex; justify-content: space-between; text-align: left; font-size: 24px;">
+                <div>
+                    <p style="font-weight: 800;">CSE Department</p>
+                    <p>Ideal Institute of Technology</p>
+                </div>
+                <div>
+                    <p style="font-weight: 800;">Presented By:</p>
+                    <ul style="list-style: none; padding: 0; font-weight: 600;">
+                        <li>Navaneeth Tripathi Aman</li>
+                        <li>Mylapalli Yesebu</li>
+                        <li>Pakki Uma Aditya Mohan</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- More slides follow simplified pattern... -->
+    <!-- (I will include all 13 slides with trimmed text) -->
+    
+    <div class="slide" id="s2">
+        <div class="header"><h1 class="title-text">Introduction</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <p class="body-text">AI-based academic system to monitor and improve student performance.</p>
+            <p class="body-text">Centralized platform for marks, tests, and placement activities.</p>
+            <p class="body-text">Reduces manual paper work and improves record accuracy.</p>
+        </div>
+    </div>
+
+    <div class="slide" id="s3">
+        <div class="header"><h1 class="title-text">Problem Statement</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-exclamation-circle bullet-icon"></i><div>Manual maintenance of student records is difficult.</div></div>
+            <div class="bullet-item"><i class="fas fa-exclamation-circle bullet-icon"></i><div>Separate files make data management confusing.</div></div>
+            <div class="bullet-item"><i class="fas fa-exclamation-circle bullet-icon"></i><div>Manual question paper preparation is slow.</div></div>
+        </div>
+    </div>
+
+    <div class="slide" id="s4">
+        <div class="header"><h1 class="title-text">Existing System</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-times-circle bullet-icon"></i><div>Paper-based or manual spreadsheet systems.</div></div>
+            <div class="bullet-item"><i class="fas fa-times-circle bullet-icon"></i><div>Disconnected department record-keeping.</div></div>
+            <div class="bullet-item"><i class="fas fa-times-circle bullet-icon"></i><div>No automated analysis or performance insights.</div></div>
+        </div>
+    </div>
+
+    <div class="slide" id="s5">
+        <div class="header"><h1 class="title-text">Drawbacks</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-ban bullet-icon"></i><div>Extremely time-consuming manual updates.</div></div>
+            <div class="bullet-item"><i class="fas fa-ban bullet-icon"></i><div>High risk of human errors in calculations.</div></div>
+            <div class="bullet-item"><i class="fas fa-ban bullet-icon"></i><div>Lack of real-time performance tracking.</div></div>
+        </div>
+    </div>
+
+    <div class="slide" id="s6">
+        <div class="header"><h1 class="title-text">Proposed System</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-check-circle bullet-icon"></i><div>Automated Excel marks upload and processing.</div></div>
+            <div class="bullet-item"><i class="fas fa-check-circle bullet-icon"></i><div>AI-driven automated test generation engine.</div></div>
+            <div class="bullet-item"><i class="fas fa-check-circle bullet-icon"></i><div>Centralized dashboard for all user roles.</div></div>
+        </div>
+    </div>
+
+    <div class="slide" id="s7">
+        <div class="header"><h1 class="title-text">Project Objectives</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-dot-circle bullet-icon"></i><div>Create a single platform for all academic data.</div></div>
+            <div class="bullet-item"><i class="fas fa-dot-circle bullet-icon"></i><div>Support automated performance analysis.</div></div>
+            <div class="bullet-item"><i class="fas fa-dot-circle bullet-icon"></i><div>Provide quick placement and job notifications.</div></div>
+        </div>
+    </div>
+
+    <div class="slide" id="s8">
+        <div class="header"><h1 class="title-text">Project Modules</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-boxes bullet-icon"></i><div>Authentication & User Management.</div></div>
+            <div class="bullet-item"><i class="fas fa-boxes bullet-icon"></i><div>Marks Management & Bulk Uploads.</div></div>
+            <div class="bullet-item"><i class="fas fa-boxes bullet-icon"></i><div>AI Test Engine & Online Portal.</div></div>
+            <div class="bullet-item"><i class="fas fa-boxes bullet-icon"></i><div>Analytics & Visual Reports.</div></div>
+        </div>
+    </div>
+
+    <div class="slide" id="s9">
+        <div class="header"><h1 class="title-text">Technologies</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-laptop-code bullet-icon"></i><div>Frontend: React.js & Tailwind CSS.</div></div>
+            <div class="bullet-item"><i class="fas fa-laptop-code bullet-icon"></i><div>Backend: Python & FastAPI.</div></div>
+            <div class="bullet-item"><i class="fas fa-laptop-code bullet-icon"></i><div>Database: SQLite (Lightweight).</div></div>
+            <div class="bullet-item"><i class="fas fa-laptop-code bullet-icon"></i><div>AI Engine: Google Gemini AI.</div></div>
+        </div>
+    </div>
+
+    <div class="slide" id="s10">
+        <div class="header"><h1 class="title-text">System Architecture</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <p class="body-text">Robust 3-Layer Design:</p>
+            <div class="bullet-item"><i class="fas fa-layer-group bullet-icon"></i><div>Presentation Layer: React.js UI.</div></div>
+            <div class="bullet-item"><i class="fas fa-layer-group bullet-icon"></i><div>Logic Layer: FastAPI Backend.</div></div>
+            <div class="bullet-item"><i class="fas fa-layer-group bullet-icon"></i><div>Data Layer: SQLite Storage.</div></div>
+        </div>
+    </div>
+
+    <div class="slide" id="s11">
+        <div class="header"><h1 class="title-text">Expected Output</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-poll bullet-icon"></i><div>Accurate and automated student reports.</div></div>
+            <div class="bullet-item"><i class="fas fa-poll bullet-icon"></i><div>Interactive performance trend charts.</div></div>
+            <div class="bullet-item"><i class="fas fa-poll bullet-icon"></i><div>Faster test preparation via AI engine.</div></div>
+        </div>
+    </div>
+
+    <div class="slide" id="s12">
+        <div class="header"><h1 class="title-text">Future Scope</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-rocket bullet-icon"></i><div>Add JWT-based secure auth sessions.</div></div>
+            <div class="bullet-item"><i class="fas fa-rocket bullet-icon"></i><div>Integrate predictive AI modeling.</div></div>
+            <div class="bullet-item"><i class="fas fa-rocket bullet-icon"></i><div>Build a native mobile tracking app.</div></div>
+        </div>
+    </div>
+
+    <div class="slide" id="s13">
+        <div class="header"><h1 class="title-text">Conclusion</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <p class="body-text">A modern solution for institutional management.</p>
+            <p class="body-text">Streamlining academics and placements via automation.</p>
+        </div>
+    </div>
+
+    <div style="height: 500px; width: 100%;"></div>
+</div>
+
+</body>
+</html>

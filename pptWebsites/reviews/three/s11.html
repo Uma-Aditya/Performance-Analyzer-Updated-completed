@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Performance Analyzer - Testing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        :root { --p-blue: #2563eb; --text: #1a1a1a; --border: #cbd5e1; }
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #ffffff; overflow: hidden; }
+        .slide-container { width: 1280px; height: 720px; background: #ffffff; position: relative; padding: 60px 80px; box-sizing: border-box; }
+        .header { margin-bottom: 20px; }
+        .title-text { margin: 0; font-size: 52px; font-weight: 700; color: var(--text); }
+        .separator { width: 100%; height: 2px; background-color: var(--border); margin-top: 15px; margin-bottom: 40px; }
+        .bullet-item { display: flex; align-items: flex-start; margin-bottom: 22px; font-size: 24px; line-height: 1.4; color: #333; }
+        .bullet-icon { margin-right: 18px; color: var(--p-blue); font-size: 14px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header"><h1 class="title-text">Testing and Validation</h1></div>
+        <div class="separator"></div>
+        <div class="bullet-item"><i class="fas fa-vial bullet-icon"></i><div><strong>Login Logic:</strong> Tested and verified; users are redirected to the correct dashboard after login.</div></div>
+        <div class="bullet-item"><i class="fas fa-vial bullet-icon"></i><div><strong>Marks Upload:</strong> Functionality tested; uploaded data is stored correctly in the database.</div></div>
+        <div class="bullet-item"><i class="fas fa-vial bullet-icon"></i><div><strong>AI Generation:</strong> AI question generation verified; system generates MCQs successfully.</div></div>
+        <div class="bullet-item"><i class="fas fa-vial bullet-icon"></i><div><strong>Test Submission:</strong> Online submission tested; student scores are calculated and displayed correctly.</div></div>
+    </div>
+</body>
+</html>

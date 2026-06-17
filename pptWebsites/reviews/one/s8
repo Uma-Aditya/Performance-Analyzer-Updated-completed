@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Performance Analyzer - Modules</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        :root { --p-blue: #2563eb; --text: #1a1a1a; --border: #cbd5e1; }
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #ffffff; overflow: hidden; }
+        .slide-container { width: 1280px; height: 720px; background: #ffffff; position: relative; padding: 60px 80px; box-sizing: border-box; }
+        .header { margin-bottom: 20px; }
+        .title-text { margin: 0; font-size: 52px; font-weight: 700; color: var(--text); }
+        .separator { width: 100%; height: 2px; background-color: var(--border); margin-top: 15px; margin-bottom: 40px; }
+        .bullet-item { display: flex; align-items: flex-start; margin-bottom: 24px; font-size: 26px; line-height: 1.5; color: #333; }
+        .bullet-icon { margin-right: 18px; color: var(--p-blue); font-size: 14px; margin-top: 14px; }
+        .bullet-text { flex: 1; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header"><h1 class="title-text">Modules of the Project</h1></div>
+        <div class="separator"></div>
+        <div class="bullet-item"><i class="fas fa-circle bullet-icon"></i><div class="bullet-text">Authentication Module: Provides secure login for all users.</div></div>
+        <div class="bullet-item"><i class="fas fa-circle bullet-icon"></i><div class="bullet-text">Student Management Module: Stores student details and academic records.</div></div>
+        <div class="bullet-item"><i class="fas fa-circle bullet-icon"></i><div class="bullet-text">Marks Upload Module: Faculty can upload Excel sheets containing marks.</div></div>
+        <div class="bullet-item"><i class="fas fa-circle bullet-icon"></i><div class="bullet-text">Analytics Module: Generates charts and performance reports.</div></div>
+        <div class="bullet-item"><i class="fas fa-circle bullet-icon"></i><div class="bullet-text">Placement Module: Placement officers can post jobs and updates.</div></div>
+    </div>
+</body>
+</html>

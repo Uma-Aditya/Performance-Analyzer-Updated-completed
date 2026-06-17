@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Review 5 - Performance Analyzer Final</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        :root { --p-blue: #2563eb; --text: #111; --border: #cbd5e1; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #f1f5f9; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        #presentation-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 0 300px 0;
+            gap: 60px;
+        }
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background: #fff;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.12);
+            border-radius: 20px;
+            flex-shrink: 0;
+            padding: 70px 90px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .header { margin-bottom: 5px; }
+        .title-text { margin: 0; font-size: 56px; font-weight: 800; color: var(--text); letter-spacing: -1.5px; }
+        .separator { width: 100%; height: 5px; background-color: var(--p-blue); margin: 25px 0 45px 0; border-radius: 3px; }
+        .content-box { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+        .bullet-item { display: flex; align-items: flex-start; margin-bottom: 28px; font-size: 28px; line-height: 1.4; color: #1a1a1a; font-weight: 500; }
+        .bullet-icon { margin-right: 22px; color: var(--p-blue); font-size: 18px; margin-top: 10px; }
+        .body-text { font-size: 32px; line-height: 1.6; color: #111; margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+
+<div id="presentation-container">
+    <!-- SLIDE 1: Title Slide -->
+    <div class="slide" id="s1">
+        <div style="height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+            <h1 style="font-size: 88px; font-weight: 800; margin: 0; color: var(--p-blue); letter-spacing: -3px; line-height: 1.1;">Performance Analyzer</h1>
+            <p style="font-size: 34px; color: #4b5563; margin: 20px 0 60px 0; font-weight: 500; max-width: 900px;">Student Performance Tracking Using Artificial Intelligence and Data Science</p>
+            <div style="width: 100%; display: flex; justify-content: space-between; text-align: left; font-size: 24px; border-top: 2px solid #f1f5f9; padding-top: 50px;">
+                <div>
+                    <p style="font-weight: 800; color: #111;">Department of Computer Science and Engineering</p>
+                    <p style="color: #64748b;">Ideal Institute of Technology</p>
+                    <p style="margin-top: 15px; font-weight: 700; color: var(--p-blue);">Academic Year: 2025–2026</p>
+                </div>
+                <div>
+                    <p style="font-weight: 800; color: #111;">Presented By:</p>
+                    <ul style="list-style: none; padding: 0; margin: 10px 0; font-weight: 600; line-height: 1.6;">
+                        <li>Navaneeth Tripathi Aman – 226K1A0545</li>
+                        <li>Mylapalli Yesebu – 226K1A0543</li>
+                        <li>Pakki Uma Aditya Mohan – 226K1A0547</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Guide:</strong> Mrs. S. Jyothirmayee, M.Tech</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: Final Review Overview -->
+    <div class="slide" id="s2">
+        <div class="header"><h1 class="title-text">Final Review Overview</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <p class="body-text">Performance Analyzer has now reached the final stage of development where all major modules have been completed and integrated.</p>
+            <p class="body-text">The system includes login, dashboards, marks upload, AI-based tests, analytics, placement management, and report generation.</p>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: Final Completed Modules -->
+    <div class="slide" id="s3">
+        <div class="header"><h1 class="title-text">Final Completed Modules</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-check-double bullet-icon"></i><div>Authentication and Role Management module is completed. All users can log in securely with separate permissions.</div></div>
+            <div class="bullet-item"><i class="fas fa-check-double bullet-icon"></i><div>Student, Faculty, and TPO modules are completed. Each module manages role-specific details and features.</div></div>
+            <div class="bullet-item"><i class="fas fa-check-double bullet-icon"></i><div>Marks Upload and Test modules are fully working. Faculty can upload marks and conduct online tests.</div></div>
+            <div class="bullet-item"><i class="fas fa-check-double bullet-icon"></i><div>Placement module is completed. Placement officers can add jobs and notifications.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: Major Features Implemented -->
+    <div class="slide" id="s4">
+        <div class="header"><h1 class="title-text">Major Features Implemented</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-star bullet-icon"></i><div>Faculty can upload marks through Excel files. Uploaded data is processed and stored automatically.</div></div>
+            <div class="bullet-item"><i class="fas fa-star bullet-icon"></i><div>Students can attend online tests. Test scores are displayed immediately after submission.</div></div>
+            <div class="bullet-item"><i class="fas fa-star bullet-icon"></i><div>AI-based question generation is implemented. Faculty can create multiple-choice questions quickly.</div></div>
+            <div class="bullet-item"><i class="fas fa-star bullet-icon"></i><div>Analytics dashboards are available. Charts help users understand student performance trends.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: Frontend Implementation -->
+    <div class="slide" id="s5">
+        <div class="header"><h1 class="title-text">Frontend Implementation</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-code bullet-icon"></i><div>React.js and TypeScript are used for development, providing a responsive and interactive user interface.</div></div>
+            <div class="bullet-item"><i class="fas fa-code bullet-icon"></i><div>Tailwind CSS is used for styling, giving the project a modern and clean design.</div></div>
+            <div class="bullet-item"><i class="fas fa-code bullet-icon"></i><div>Separate dashboards are available for each role. Users can access only the required features.</div></div>
+            <div class="bullet-item"><i class="fas fa-code bullet-icon"></i><div>Recharts is used for analytics graphs. Student performance is displayed visually.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: Backend Implementation -->
+    <div class="slide" id="s6">
+        <div class="header"><h1 class="title-text">Backend Implementation</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-server bullet-icon"></i><div>Python and FastAPI are used in the backend. APIs handle login, marks upload, tests, and reports.</div></div>
+            <div class="bullet-item"><i class="fas fa-server bullet-icon"></i><div>SQLAlchemy manages database communication, simplifying table creation and record handling.</div></div>
+            <div class="bullet-item"><i class="fas fa-server bullet-icon"></i><div>Pandas and OpenPyXL process Excel files. Faculty marks are uploaded and stored correctly.</div></div>
+            <div class="bullet-item"><i class="fas fa-server bullet-icon"></i><div>Google Generative AI API is integrated. It generates questions for online tests.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: Database and APIs -->
+    <div class="slide" id="s7">
+        <div class="header"><h1 class="title-text">Database and APIs</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-link bullet-icon"></i><div>SQLite is used as the database, storing academic, test, and placement records.</div></div>
+            <div class="bullet-item"><i class="fas fa-link bullet-icon"></i><div>Student and Teacher APIs manage user data. Admin can add, update, and view records.</div></div>
+            <div class="bullet-item"><i class="fas fa-link bullet-icon"></i><div>Marks Upload API stores Excel data efficiently into the database.</div></div>
+            <div class="bullet-item"><i class="fas fa-link bullet-icon"></i><div>Test and Placement APIs are completed, managing online tests and job postings.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: Screens Developed -->
+    <div class="slide" id="s8">
+        <div class="header"><h1 class="title-text">Screens Developed</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-desktop bullet-icon"></i><div>Login screens are completed with separate pages for Admin, Faculty, Student, and TPO.</div></div>
+            <div class="bullet-item"><i class="fas fa-desktop bullet-icon"></i><div>Dashboard screens are fully developed with role-specific navigation options.</div></div>
+            <div class="bullet-item"><i class="fas fa-desktop bullet-icon"></i><div>Marks upload and test screens are working, allowing faculty to upload marks and create tests.</div></div>
+            <div class="bullet-item"><i class="fas fa-desktop bullet-icon"></i><div>Placement and analytics screens are available for students to view jobs and reports.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 9: Testing Results -->
+    <div class="slide" id="s9">
+        <div class="header"><h1 class="title-text">Testing Results</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-vial bullet-icon"></i><div>Login module tested successfully; users are redirected to the correct dashboard after login.</div></div>
+            <div class="bullet-item"><i class="fas fa-vial bullet-icon"></i><div>Marks upload verified; uploaded Excel files are stored correctly in the database.</div></div>
+            <div class="bullet-item"><i class="fas fa-vial bullet-icon"></i><div>Online test module is tested, and scores are calculated without errors.</div></div>
+            <div class="bullet-item"><i class="fas fa-vial bullet-icon"></i><div>Placement module is validated; job posts are visible to students without issue.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 10: Project Outcomes -->
+    <div class="slide" id="s10">
+        <div class="header"><h1 class="title-text">Project Outcomes</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-check-circle bullet-icon"></i><div>The project reduces manual academic work and helps faculty manage records efficiently.</div></div>
+            <div class="bullet-item"><i class="fas fa-check-circle bullet-icon"></i><div>Student performance tracking is improved through identified weak student reports and charts.</div></div>
+            <div class="bullet-item"><i class="fas fa-check-circle bullet-icon"></i><div>AI-based tests save time for faculty by generating question papers automatically.</div></div>
+            <div class="bullet-item"><i class="fas fa-check-circle bullet-icon"></i><div>Placement support is integrated, allowing students to access job opportunities easily.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 11: Future Scope -->
+    <div class="slide" id="s11">
+        <div class="header"><h1 class="title-text">Future Scope</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <div class="bullet-item"><i class="fas fa-forward bullet-icon"></i><div>Add JWT-based authentication to improve security and session handling.</div></div>
+            <div class="bullet-item"><i class="fas fa-forward bullet-icon"></i><div>Add attendance and assignment modules for broader academic management.</div></div>
+            <div class="bullet-item"><i class="fas fa-forward bullet-icon"></i><div>Add PDF and Excel report download options for future use.</div></div>
+            <div class="bullet-item"><i class="fas fa-forward bullet-icon"></i><div>Add mobile application support for smartphone access.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 12: Final Conclusion -->
+    <div class="slide" id="s12">
+        <div class="header"><h1 class="title-text">Final Conclusion</h1></div>
+        <div class="separator"></div>
+        <div class="content-box">
+            <p class="body-text">Performance Analyzer provides a complete academic management platform with marks upload, online tests, AI-based questions, analytics, and placement support.</p>
+            <p class="body-text">The project reduces manual work, improves accuracy, and helps institutions manage student performance effectively.</p>
+        </div>
+    </div>
+
+    <div style="height: 500px; width: 100%;"></div>
+</div>
+
+</body>
+</html>
